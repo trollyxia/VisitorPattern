@@ -25,5 +25,15 @@ A simple example to try/learn the Visitor Pattern in C++
    
 
 
-3. 
+3. wrong_shared_ptr_visitor.cpp:
 
+   ```
+   virtual int BaseVisitor::visit(std::shared_ptr<BaseVisitable>)
+   virtual int BaseVisitor::visit(std::shared_ptr<BaseVisitable>)
+   virtual int BaseVisitor::visit(std::shared_ptr<BaseVisitable>)
+   virtual int BaseVisitor::visit(std::shared_ptr<BaseVisitable>)
+   ```
+
+   Because only `BaseVisitable` inherits `std::enable_shared_from_this<BaseVisitable>`, calling `shared_from_this()` from inside class `Visitable1` and `Visitable2` would return `shared_ptr<BaseVisitable>`. Need to downcast to get `shared_ptr<Visitable1>` or `shared_ptr<Visitable2>`.
+
+4. 
