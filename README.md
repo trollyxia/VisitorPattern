@@ -67,5 +67,13 @@ A simple example to try/learn the Visitor Pattern in C++
    virtual int Visitor2::visit(std::shared_ptr<Visitable2>)
    ```
 
-7. There are still a lot of duplicate code for `Visitable`. 
+7. There are still a lot of duplicate code for `Visitable`. Use similar CRTP to also clean `Visitable` code: [visitor_visitable_clean.cpp](./visitor_visitable_clean.cpp). Running it you would get:
+
+   ```
+   virtual int Visitor1::visit(std::shared_ptr<Visitable1>)
+   virtual int Visitor1::visit(std::shared_ptr<Visitable2>)
+   virtual int Visitor2::visit(std::shared_ptr<Visitable2>)
+   ```
+
+   
 
