@@ -75,5 +75,16 @@ A simple example to try/learn the Visitor Pattern in C++
    virtual int Visitor2::visit(std::shared_ptr<Visitable2>)
    ```
 
+8. Another way to clean `Visitable` code without CRTP would be like this: [visitable_clean_without_crtp.cpp](visitable_clean_without_crtp.cpp). Running it you would get:
+
+   ```
+   virtual int Visitor1::visit(std::shared_ptr<Visitable1>)
+   virtual int Visitor1::visit(std::shared_ptr<Visitable2>)
+   virtual int Visitor2::visit(std::shared_ptr<Visitable2>)
+   ```
+
+   The trick here is to create a template function `shared_from` in the Base class, which accepts a Derived class pointer and cast the pointer into `std::shared_ptr<Derived>`.
+
    
+
 
